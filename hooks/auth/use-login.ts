@@ -6,14 +6,16 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-import { authService } from "@/services/auth.service";
+import { authService } from "@/services";
 import { loginSchema, LoginSchema } from "@/lib/validations/auth.schema";
 import { useAuthStore } from "@/store/auth.store";
+import { useAuth } from "@/hooks/auth";
 
 export const useLogin = () => {
   const router = useRouter();
+  const { login } = useAuth();
 
-  const loginStore = useAuthStore((state) => state.login);
+  const loginStore = login;
 
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),

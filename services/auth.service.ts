@@ -32,8 +32,15 @@ const getCurrentUser = async () => {
   return response.data;
 };
 
+const logout = async () => {
+  const response = await api.post<ApiResponse<AuthResponse>>("/auth/logout");
+
+  return response?.data;
+}
+
 export const authService = {
     login,
     register,
-    getCurrentUser
+    getCurrentUser,
+    logout
 };

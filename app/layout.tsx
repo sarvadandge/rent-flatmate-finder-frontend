@@ -1,5 +1,6 @@
 import QueryProvider from "@/providers/query-provider";
 import ToasterProvider from "@/providers/toaster-provider";
+import AuthProvider from "@/providers/auth-provider";
 import "./globals.css";
 
 export default function RootLayout({
@@ -11,8 +12,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <QueryProvider>
-          <ToasterProvider />
-          {children}
+          <AuthProvider>
+            <ToasterProvider />
+            {children}
+          </AuthProvider>
         </QueryProvider>
       </body>
     </html>

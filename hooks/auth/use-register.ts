@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-import { authService } from "@/services/auth.service";
+import { authService } from "@/services";
 import { RegisterSchema } from "@/lib/validations/auth.schema";
 import { useAuthStore } from "@/store/auth.store";
 
