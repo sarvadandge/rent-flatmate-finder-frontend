@@ -1,9 +1,12 @@
 "use client";
 
 import { ReactNode, useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import LoadingScreen from "@/components/common/loading-screen";
+import DashboardShell from "@/components/layout/dashboard-shell";
+
+import { ROUTES } from "@/constants/routes";
 import { useAuthStore } from "@/store/auth.store";
 
 type DashboardLayoutProps = {
@@ -12,29 +15,16 @@ type DashboardLayoutProps = {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const router = useRouter();
-  const pathname = usePathname();
 
-  const { user, isAuthenticated, isLoading } = useAuthStore();
+  const { isAuthenticated, isLoading } = useAuthStore();
 
   useEffect(() => {
-    console.log(user)
     if (isLoading) return;
 
     if (!isAuthenticated) {
-      router.replace("/login");
-      return;
+      router.replace(ROUTES.LOGIN);
     }
-
-    if (user?.role === "OWNER" && pathname.startsWith("/tenant")) {
-      router.replace("/owner");
-      return;
-    }
-
-    if (user?.role === "TENANT" && pathname.startsWith("/owner")) {
-      router.replace("/tenant");
-      return;
-    }
-  }, [isAuthenticated, isLoading, pathname, router, user]);
+  }, [isAuthenticated, isLoading, router]);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -44,5 +34,5 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     return null;
   }
 
-  return <main className="min-h-screen bg-white">{children}</main>;
+  return <DashboardShell>{children}</DashboardShell>;
 }
