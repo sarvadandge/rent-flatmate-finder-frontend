@@ -1,11 +1,16 @@
 export const ROUTES = {
   HOME: "/",
+
   LOGIN: "/login",
   REGISTER: "/register",
 
-  OWNER_DASHBOARD: "/owner",
+  DASHBOARD: "/dashboard",
 
-  TENANT_DASHBOARD: "/tenant",
+  LISTINGS: "/dashboard/listings",
 
-  CHAT: "/chat",
-};
+  INTERESTS: "/dashboard/interests",
+
+  CHAT: "/dashboard/chat",
+
+  PROFILE: "/dashboard/profile",
+} as const;

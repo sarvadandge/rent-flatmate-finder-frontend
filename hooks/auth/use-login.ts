@@ -29,7 +29,7 @@ export const useLogin = () => {
 
       toast.success(response.message);
 
-      router.push(response.data.user.role === "OWNER" ? "/owner" : "/tenant");
+      router.push("/dashboard");
     },
 
     onError: (error: any) => {
