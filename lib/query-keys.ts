@@ -14,4 +14,8 @@ export const queryKeys = {
   chat: {
     rooms: ["chat", "rooms"] as const,
   },
+
+  interests: {
+    all: ["interests"] as const,
+  },
 };

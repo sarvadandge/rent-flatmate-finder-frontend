@@ -49,7 +49,10 @@ export default function ListingDetailsView({
 
             <ListingOwner listing={listing} />
 
-            <ListingActions isFilled={listing.isFilled} />
+            <ListingActions
+              listingId={listing.id}
+              isFilled={listing.isFilled}
+            />
           </div>
         </div>
       </div>

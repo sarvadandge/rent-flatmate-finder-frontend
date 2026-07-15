@@ -1,24 +1,34 @@
 "use client";
 
+import ExpressInterestDialog from "@/components/interests/express-interest-dialog";
 import { Button } from "@/components/ui/button";
 
 type ListingActionsProps = {
+  listingId: string;
   isFilled: boolean;
-  onExpressInterest?: () => void;
+  hasRequested?: boolean;
 };
 
 export default function ListingActions({
+  listingId,
   isFilled,
-  onExpressInterest,
+  hasRequested = true,
 }: ListingActionsProps) {
-  return (
-    <Button
-      className="w-full"
-      size="lg"
-      disabled={isFilled}
-      onClick={onExpressInterest}
-    >
-      {isFilled ? "Listing Filled" : "Express Interest"}
-    </Button>
-  );
+  if (isFilled) {
+    return (
+      <Button className="w-full" size="lg" disabled>
+        Listing Filled
+      </Button>
+    );
+  }
+
+  if (hasRequested) {
+    return (
+      <Button className="w-full" size="lg" disabled>
+        Interest Sent
+      </Button>
+    );
+  }
+
+  return <ExpressInterestDialog listingId={listingId} />;
 }
