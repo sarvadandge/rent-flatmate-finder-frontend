@@ -9,6 +9,7 @@ export interface ListingImage {
 export interface ListingOwner {
   id: string;
   name: string;
+  email: string;
 }
 
 export interface ListingCompatibility {
