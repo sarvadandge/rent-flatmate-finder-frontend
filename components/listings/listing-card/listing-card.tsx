@@ -7,6 +7,7 @@ import { Listing } from "@/types/listing";
 import ListingCardHeader from "./listing-card-header";
 import ListingCardContent from "./listing-card-content";
 import ListingCardFooter from "./listing-card-footer";
+import Link from "next/link";
 
 type ListingCardProps = {
   listing: Listing;
@@ -20,14 +21,16 @@ export default function ListingCard({
   className,
 }: ListingCardProps) {
   return (
-    <Card
-      className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${className ?? ""}`}
-    >
-      <ListingCardHeader listing={listing} />
+    <Link href={`/dashboard/listings/${listing.id}`} className="block">
+      <Card
+        className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${className ?? ""}`}
+      >
+        <ListingCardHeader listing={listing} />
 
-      <ListingCardContent listing={listing} />
+        <ListingCardContent listing={listing} />
 
-      {children && <ListingCardFooter>{children}</ListingCardFooter>}
-    </Card>
+        {children && <ListingCardFooter>{children}</ListingCardFooter>}
+      </Card>
+    </Link>
   );
 }

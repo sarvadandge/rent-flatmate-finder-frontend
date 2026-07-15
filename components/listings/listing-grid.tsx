@@ -1,6 +1,6 @@
 import ListingCard from "./listing-card/listing-card";
 import ListingEmpty from "./listing-empty";
-import ListingSkeleton from "./listing-skeleton";
+import ListingSkeleton from "../common/skeletons/listing-skeleton";
 
 import { Listing } from "@/types/listing";
 
