@@ -1,4 +1,5 @@
-export default function Page() {
-  return <div>Coming Soon</div>;
-}
+import ListingsView from "@/components/listings/listings-view";
 
+export default function ListingsPage() {
+  return <ListingsView />;
+}

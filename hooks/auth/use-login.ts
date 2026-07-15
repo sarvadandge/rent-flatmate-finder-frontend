@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-import { authService } from "@/services";
+import { authApi } from "@/api";
 import { loginSchema, LoginSchema } from "@/lib/validations/auth.schema";
 import { useAuthStore } from "@/store/auth.store";
 import { useAuth } from "@/hooks/auth";
@@ -22,7 +22,7 @@ export const useLogin = () => {
   });
 
   const mutation = useMutation({
-    mutationFn: authService.login,
+    mutationFn: authApi.login,
 
     onSuccess: (response) => {
       loginStore(response.data.user, response.data.token);

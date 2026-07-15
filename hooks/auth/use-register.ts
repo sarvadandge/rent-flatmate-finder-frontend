@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-import { authService } from "@/services";
+import { authApi } from "@/api";
 import { RegisterSchema } from "@/lib/validations/auth.schema";
 import { useAuthStore } from "@/store/auth.store";
 
@@ -14,7 +14,7 @@ export const useRegister = () => {
   const loginStore = useAuthStore((state) => state.login);
 
   const mutation = useMutation({
-    mutationFn: authService.register,
+    mutationFn: authApi.register,
 
     onSuccess: (response) => {
       loginStore(response.data.user, response.data.token);

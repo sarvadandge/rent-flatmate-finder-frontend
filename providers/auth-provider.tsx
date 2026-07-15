@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect } from "react";
 
-import { authService } from "@/services";
+import { authApi } from "@/api";
 import { useAuthStore } from "@/store/auth.store";
 
 type AuthProviderProps = {
@@ -20,7 +20,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
       }
 
       try {
-        const response = await authService.getCurrentUser();
+        const response = await authApi.getCurrentUser();
 
         setUser(response.data);
       } catch (error) {
